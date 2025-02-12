@@ -91,4 +91,36 @@ const openReadmeInEditor = () => fetch('/__open-in-editor?file=README.md')
     us by
     <a href="https://vuejs.org/sponsor/" target="_blank" rel="noopener">becoming a sponsor</a>.
   </WelcomeItem>
+
+  <div>
+    <h1>Данные из родительского окна</h1>
+    <p><strong>Token:</strong> {{ token || 'Нет данных' }}</p>
+    <p><strong>Space ID:</strong> {{ spaceId || 'Нет данных' }}</p>
+  </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      token: null,
+      spaceId: null
+    };
+  },
+  mounted() {
+    // Получаем данные из глобальных переменных
+    this.token = this.$iframeData.token;
+    this.spaceId = this.$iframeData.spaceId;
+
+    // Подписываемся на обновления
+    window.addEventListener("message", (event) => {
+      console.log('addEventListener');
+      if (event.data?.token && event.data?.spaceId) {
+        this.token = event.data.token;
+        this.spaceId = event.data.spaceId;
+        console.log("Данные получены в iframe:", this.token, this.spaceId);
+      }
+    });
+  }
+};
+</script>

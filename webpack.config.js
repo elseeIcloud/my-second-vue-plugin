@@ -8,12 +8,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default {
-    mode: 'development', // для продакшена установите 'production'
+    mode: 'production', // для продакшена установите 'production'
     entry: './src/main.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
-        clean: true, // очистка директории перед каждой сборкой (Webpack 5)
     },
     resolve: {
         extensions: ['.js', '.vue'],
