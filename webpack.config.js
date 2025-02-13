@@ -3,12 +3,11 @@ import { fileURLToPath } from 'url';
 import { VueLoaderPlugin } from 'vue-loader';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-// Определяем __dirname для ES-модулей
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default {
-    mode: 'production', // для продакшена установите 'production'
+    mode: 'production',
     entry: './src/main.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -22,7 +21,7 @@ export default {
     },
     devServer: {
         static: {
-            directory: path.join(__dirname, 'public') // директория для статических файлов (например, index.html)
+            directory: path.join(__dirname, 'public')
         },
         port: 8088,
         open: true,
@@ -43,12 +42,10 @@ export default {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
             },
-            // Новое правило для обработки изображений (в том числе SVG)
             {
                 test: /\.(png|jpe?g|gif|svg)$/i,
                 type: 'asset/resource'
             }
-            // Если нужно обрабатывать другие форматы, добавьте соответствующие правила
         ]
     },
 

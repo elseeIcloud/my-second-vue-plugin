@@ -3,7 +3,7 @@
     <div class="content">
       <img alt="DRUID logo" class="logo" src="./assets/logo.png" width="128" height="128" />
       <div class="wrapper">
-        <Example msg="DRUID Plugin Example!" />
+        <Example msg="DRUID Plugin Example" />
       </div>
     </div>
   </header>
