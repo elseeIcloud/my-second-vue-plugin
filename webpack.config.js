@@ -23,7 +23,7 @@ export default {
         static: {
             directory: path.join(__dirname, 'public')
         },
-        port: 8088,
+        port: 8080,
         open: true,
         hot: true
     },
